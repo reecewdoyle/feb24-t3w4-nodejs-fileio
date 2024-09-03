@@ -25,6 +25,21 @@ console.log(contentToWrite);
 // Promises-based version of node:fs
 const fs = require("node:fs/promises");
 
+async function writeEnvFile(){
+	console.log("Before the await");
+	try {
+		let result = await fs.writeFile(".env", contentToWrite);
+		console.log(result);
+	} catch (error) {
+		console.log("Error occured writing the file:", error);
+	}
+	
+	console.log("After the await");
+}
+writeEnvFile();
+
+
+
 // console.log("Before the promise");
 // fs.writeFile(".env", contentToWrite)
 // .then(() => {
